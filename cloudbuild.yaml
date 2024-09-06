@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/nodejs'
+  args: ['npm', 'install']
+- name: 'gcr.io/cloud-builders/nodejs'
+  args: ['node', 'app.js']
