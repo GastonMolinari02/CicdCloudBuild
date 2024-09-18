@@ -3,6 +3,6 @@ steps:
   entrypoint: 'npm'
   args: ['install']
 - name: 'node:14'
-  entrypoint: 'node'
-  args: ['app.js']
+  entrypoint: 'npm'
+  args: ['start']
     
