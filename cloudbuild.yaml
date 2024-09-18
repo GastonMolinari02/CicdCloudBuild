@@ -5,4 +5,5 @@ steps:
 - name: 'node:14'
   entrypoint: 'npm'
   args: ['start']
-    
+  entrypoint: 'bash'
+  args: ['-c', 'npm start & sleep 10']
