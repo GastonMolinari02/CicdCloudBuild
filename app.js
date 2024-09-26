@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.dget('/', (req, res) => {
+app.get('/', (req, res) => {
   const name = req.query.name || 'RubikCloud team!';
 
   const htmlContent = `
@@ -69,3 +69,14 @@ try {
   console.error('Error detectado:', error);
   process.exit(1); // Forzar la salida con código de error
 }
+
+// Manejo global de errores no capturados
+process.on('uncaughtException', (error) => {
+  console.error('Error no capturado:', error);
+  process.exit(1); // Salir con código de error
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Promesa no manejada:', promise, 'razón:', reason);
+  process.exit(1); // Salir con código de error
+});

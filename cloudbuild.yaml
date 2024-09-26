@@ -14,7 +14,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['start']
   entrypoint: 'bash'
-  args: ['-c', 'npm start & sleep 10']
+  args: ['-c', 'npm start & sleep 30']
 
 
 timeout: '1200s'
