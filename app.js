@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
+app.dget('/', (req, res) => {
   const name = req.query.name || 'RubikCloud team!';
 
   const htmlContent = `
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
       </style>
     </head>
     <body>
-      <h1>Hola ${nadsame}!</h1>
+      <h1>Hola ${name}!</h1>
       <form action="/" method="GET">
         <input type="text" id="name" name="name" required placeholder="Ingresa tu nombre">
         <button type="submit">Enviar</button>
