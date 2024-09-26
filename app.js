@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
       </style>
     </head>
     <body>
-      <h1>Hola ${name}!</h1>
+      <h1>Hola ${nadsame}!</h1>
       <form action="/" method="GET">
         <input type="text" id="name" name="name" required placeholder="Ingresa tu nombre">
         <button type="submit">Enviar</button>
@@ -53,8 +53,13 @@ app.get('/', (req, res) => {
   res.status(200).send(htmlContent);
 });
 
-// Iniciar el servidor en el puerto 3000
+// Iniciar el servidor en el puerto 3000 y manejar errores
 const PORT = process.env.PORT || 3000;
-app.listedsan(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+app.listen(PORT, (err) => {
+  if (err) {
+    console.error('Error al iniciar el servidor:', err);
+    process.exit(1);  // Terminar con código de error
+  } else {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  }
 });
