@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const vertex = vertexai()
+throw new Error('Error forzado para la demo.');
 app.get('/', (req, res) => {
   const name = req.query.name || 'RubikCloud team!';
 
@@ -53,30 +53,8 @@ app.get('/', (req, res) => {
   res.status(200).send(htmlContent);
 });
 
-// Iniciar el servidor en el puerto 3000 y manejar errores
+// Iniciar el servidor en el puerto 3000
 const PORT = process.env.PORT || 3000;
-
-try {
-  app.listen(PORT, (err) => {
-    if (err) {
-      console.error('Error al iniciar el servidor:', err);
-      throw err; // Lanzar el error para que se capture en el catch
-    } else {
-      console.log(`Servidor escuchando en http://localhost:${PORT}`);
-    }
-  });
-} catch (error) {
-  console.error('Error detectado:', error);
-  process.exit(1); // Forzar la salida con código de error
-}
-
-// Manejo global de errores no capturados
-process.on('uncaughtException', (error) => {
-  console.error('Error no capturado:', error);
-  process.exit(1); // Salir con código de error
-});
-
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Promesa no manejada:', promise, 'razón:', reason);
-  process.exit(1); // Salir con código de error
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
