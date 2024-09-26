@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const vertex = vertexai()
 app.get('/', (req, res) => {
   const name = req.query.name || 'RubikCloud team!';
 
