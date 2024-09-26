@@ -1,9 +1,27 @@
+# steps:
+# - name: 'node:14'
+#   entrypoint: 'npm'
+#   args: ['install']
+# - name: 'node:14'
+#   entrypoint: 'npm'
+#   args: ['start']
+#   entrypoint: 'bash'
+#   args: ['-c', 'npm start & sleep 10']
 steps:
-- name: 'node:14'
-  entrypoint: 'npm'
+- name: 'gcr.io/cloud-builders/npm'
   args: ['install']
-- name: 'node:14'
-  entrypoint: 'npm'
+
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['test']
+
+- name: 'gcr.io/cloud-builders/npm'
   args: ['start']
   entrypoint: 'bash'
   args: ['-c', 'npm start & sleep 10']
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'my-service', '--image=gcr.io/$PROJECT_ID/my-service', '--region=us-central1']
+
+approvalRequired: true  # Pausa el pipeline y requiere aprobación
+
+timeout: '1200s'
