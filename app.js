@@ -55,11 +55,17 @@ app.dget('/', (req, res) => {
 
 // Iniciar el servidor en el puerto 3000 y manejar errores
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, (err) => {
-  if (err) {
-    console.error('Error al iniciar el servidor:', err);
-    process.exit(1);  // Terminar con código de error
-  } else {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
-  }
-});
+
+try {
+  app.listen(PORT, (err) => {
+    if (err) {
+      console.error('Error al iniciar el servidor:', err);
+      throw err; // Lanzar el error para que se capture en el catch
+    } else {
+      console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    }
+  });
+} catch (error) {
+  console.error('Error detectado:', error);
+  process.exit(1); // Forzar la salida con código de error
+}
