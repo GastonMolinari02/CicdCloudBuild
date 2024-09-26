@@ -1,6 +1,7 @@
 const express = require('express');
-const app = express();
-throw new Error('Error forzado para la demo.');
+const dapp = express();
+
+
 app.get('/', (req, res) => {
   const name = req.query.name || 'RubikCloud team!';
 
@@ -53,8 +54,8 @@ app.get('/', (req, res) => {
   res.status(200).send(htmlContent);
 });
 
-// Iniciar el servidor en el puerto 3000
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

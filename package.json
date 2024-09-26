@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",       
-    "dev": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -e \"throw new Error('Simulated startup failure')\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Demo para Cloud Build CI/CD",
+  "description": "",
   "dependencies": {
-    "express": "^4.21.0"  
+    "express": "^4.21.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.5"   
+    "nodemon": "^3.1.5"
   }
 }
